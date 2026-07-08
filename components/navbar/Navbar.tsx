@@ -154,11 +154,22 @@ function useActiveHash() {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuId = useId();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const activeHash = useActiveHash();
   const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 8);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
@@ -209,7 +220,11 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="absolute inset-x-0 top-0 z-20 w-full bg-petroa-bg">
+      <header
+        className={`fixed inset-x-0 top-0 z-30 w-full bg-petroa-bg transition-shadow duration-200 ease-out motion-reduce:transition-none ${
+          scrolled ? "shadow-[0_1px_0_0_rgba(0,0,0,0.08),0_8px_24px_-12px_rgba(9,27,71,0.25)]" : ""
+        }`}
+      >
         <div className="flex w-full items-center justify-between px-5 py-5 lg:min-h-[91px] lg:px-14 lg:py-0">
           <Link
             href="/"
