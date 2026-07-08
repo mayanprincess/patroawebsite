@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import ContactCtaButton from "@/components/contact/ContactCtaButton";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { SVGProps } from "react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
@@ -240,8 +241,8 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <Link
-            href="#quote"
+          <ContactCtaButton
+            modal="quote"
             className={`${desktopNavLinkClassName} hidden items-center gap-1.5 text-petroa-cta lg:inline-flex`}
           >
             Request a Quote
@@ -253,7 +254,7 @@ export default function Navbar() {
               aria-hidden
               className="size-3"
             />
-          </Link>
+          </ContactCtaButton>
 
           <button
             ref={menuButtonRef}
