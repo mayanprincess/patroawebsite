@@ -116,12 +116,16 @@ export default function WhyPetroaSection() {
               const panelId = `advantage-panel-${advantage.number}`;
 
               return (
-                <StaggerItem key={advantage.number}>
-                <motion.div
+                <StaggerItem key={advantage.number} className="h-full">
+                <motion.button
+                  type="button"
+                  aria-expanded={expanded}
+                  aria-controls={panelId}
+                  onClick={() => setOpenIndex(expanded ? null : index)}
                   layout={!reduceMotion}
                   whileHover={reduceMotion ? undefined : { y: -4 }}
                   transition={{ layout: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
-                  className={`flex min-h-60 flex-col justify-between rounded-sm border p-8 transition-colors duration-200 ease-out motion-reduce:transition-none ${
+                  className={`flex h-full min-h-60 w-full flex-col justify-between rounded-sm border p-8 text-left transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-petroa-primary focus-visible:ring-offset-2 motion-reduce:transition-none ${
                     expanded
                       ? "border-petroa-line bg-petroa-accent"
                       : "border-petroa-line bg-petroa-white"
@@ -138,15 +142,7 @@ export default function WhyPetroaSection() {
                   </p>
 
                   <div className="mt-auto flex flex-col gap-4">
-                    <button
-                      type="button"
-                      aria-expanded={expanded}
-                      aria-controls={panelId}
-                      className="flex w-full items-end justify-between gap-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-petroa-primary focus-visible:ring-offset-2"
-                      onClick={() =>
-                        setOpenIndex(expanded ? null : index)
-                      }
-                    >
+                    <div className="flex w-full items-end justify-between gap-4">
                       <span
                         className={`flex-1 font-inter text-md font-semibold uppercase leading-normal ${
                           expanded
@@ -157,7 +153,7 @@ export default function WhyPetroaSection() {
                         {advantage.title}
                       </span>
                       <ChevronIcon expanded={expanded} />
-                    </button>
+                    </div>
 
                     <motion.div
                       id={panelId}
@@ -186,7 +182,7 @@ export default function WhyPetroaSection() {
                       </p>
                     </motion.div>
                   </div>
-                </motion.div>
+                </motion.button>
                 </StaggerItem>
               );
             })}

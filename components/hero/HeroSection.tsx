@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
-import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
+import ContactCtaButton from "@/components/contact/ContactCtaButton";
+import { motion, useReducedMotion } from "motion/react";import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
 
 const ctaLinkClassName =
   "inline-flex min-h-11 items-center text-xs uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-petroa-primary focus-visible:ring-offset-2 focus-visible:ring-offset-petroa-bg motion-reduce:transition-none";
@@ -28,7 +28,7 @@ export default function HeroSection() {
               className="pointer-events-none absolute -inset-x-5 -top-[72px] -bottom-10 overflow-hidden lg:-inset-x-14 lg:-top-[152px] lg:-bottom-10"
             >
               <motion.div
-                className="absolute right-[-40%] top-[22%] w-[115%] max-w-none lg:right-[6%] lg:top-[-4%] lg:w-[42%] lg:max-w-[483px]"
+                className="absolute right-[-40%] top-[22%] w-[115%] max-w-none lg:right-[3%] lg:top-[130px] lg:w-[49%] lg:max-w-[646px]"
                 initial={reduceMotion ? false : { opacity: 0, y: 24 }}
                 animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -75,16 +75,13 @@ export default function HeroSection() {
               </p>
 
               <div className="flex flex-wrap items-center gap-6">
-                <motion.div whileHover={reduceMotion ? undefined : { scale: 1.02 }} whileTap={reduceMotion ? undefined : { scale: 0.98 }}>
-                  <Link
-                    href="#quote"
-                    className={`${ctaLinkClassName} border-b border-petroa-primary pb-0.5 font-semibold text-petroa-primary hover:text-petroa-navy active:text-petroa-navy`}
-                  >
-                    Request a Quote
-                  </Link>
-                </motion.div>
-                <motion.div whileHover={reduceMotion ? undefined : { scale: 1.02 }} whileTap={reduceMotion ? undefined : { scale: 0.98 }}>
-                  <Link
+                <ContactCtaButton
+                  modal="quote"
+                  className={`${ctaLinkClassName} border-b border-petroa-primary pb-0.5 font-semibold text-petroa-primary hover:text-petroa-navy active:text-petroa-navy`}
+                >
+                  Request a Quote
+                </ContactCtaButton>
+                <motion.div whileHover={reduceMotion ? undefined : { scale: 1.02 }} whileTap={reduceMotion ? undefined : { scale: 0.98 }}>                  <Link
                     href="#services"
                     className={`${ctaLinkClassName} font-medium text-petroa-text/50 hover:text-petroa-text active:text-petroa-text`}
                   >
