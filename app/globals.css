@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f2f0ec;
+  --foreground: #111111;
+
+  --color-petroa-bg: #f2f0ec;
+  --color-petroa-text: #111111;
+  --color-petroa-primary: #306bf7;
+  --color-petroa-accent: #f7d930;
+  --color-petroa-navy: #091b47;
+  --color-petroa-slate: #93a5cf;
+  --color-petroa-muted: #9ca3af;
+  --color-petroa-line: #e5e7eb;
+  --color-petroa-white: #ffffff;
+  --color-petroa-card-blue: #0062ff;
+  --color-petroa-card-text: #0d0d0d;
+  --color-petroa-card-dark: #252222;
+  --color-petroa-cta: #313338;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-petroa-bg: var(--color-petroa-bg);
+  --color-petroa-text: var(--color-petroa-text);
+  --color-petroa-primary: var(--color-petroa-primary);
+  --color-petroa-accent: var(--color-petroa-accent);
+  --color-petroa-navy: var(--color-petroa-navy);
+  --color-petroa-slate: var(--color-petroa-slate);
+  --color-petroa-muted: var(--color-petroa-muted);
+  --color-petroa-line: var(--color-petroa-line);
+  --color-petroa-white: var(--color-petroa-white);
+  --color-petroa-card-blue: var(--color-petroa-card-blue);
+  --color-petroa-card-text: var(--color-petroa-card-text);
+  --color-petroa-card-dark: var(--color-petroa-card-dark);
+  --color-petroa-cta: var(--color-petroa-cta);
+
+  --font-sans: var(--font-barlow);
+  --font-display: var(--font-barlow-condensed);
+  --font-brand: var(--font-big-shoulders);
+  --font-mono: var(--font-dm-mono);
+  --font-inter: var(--font-inter);
+}
+
+@theme {
+  --text-2xs: 10px;
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-base: 15px;
+  --text-md: 18px;
+  --text-lg: 25.6px;
+  --text-xl: 43.2px;
+  --text-2xl: 72px;
+  --text-3xl: 86.4px;
+  --text-4xl: 144px;
+
+  --tracking-tightest: -3.6px;
+  --tracking-tighter: -1.8px;
+  --tracking-micro: 0.325px;
+  --tracking-label: 1.56px;
+  --tracking-badge: 1.65px;
+  --tracking-wide: 2px;
+  --tracking-wider: 2.2px;
+  --tracking-widest: 3px;
+
+  --radius-sm: 12px;
+  --radius-lg: 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
