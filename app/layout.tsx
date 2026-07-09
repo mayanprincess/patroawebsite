@@ -6,6 +6,7 @@ import {
   DM_Mono,
   Inter,
 } from "next/font/google";
+import { metadata as siteMetadata } from "@/lib/seo/metadata";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -37,11 +38,7 @@ const bigShoulders = Big_Shoulders({
   weight: ["900"],
 });
 
-export const metadata: Metadata = {
-  title: "PETROA — Powering Industries. Connecting Markets.",
-  description:
-    "Your strategic energy partner in Honduras & the Caribbean. Wholesale fuel supply, marine bunkering, and LNG operations since 2009.",
-};
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({
   children,

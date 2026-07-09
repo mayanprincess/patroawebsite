@@ -65,9 +65,9 @@ export default function StatsSection() {
     >
       <div className="mx-auto w-full max-w-7xl px-5 py-20 lg:px-14 lg:py-32">
         <div className="flex flex-col gap-4 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-12">
-          <p id="stats-heading" className={sectionLabelClassName}>
+          <h2 id="stats-heading" className={sectionLabelClassName}>
             By the Numbers
-          </p>
+          </h2>
 
           <Stagger className="grid grid-cols-2 gap-x-10 gap-y-10 lg:col-span-9 lg:col-start-4 lg:grid-cols-4 lg:gap-y-0">
             {STATS.map((stat) => (
