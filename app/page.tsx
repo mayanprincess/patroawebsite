@@ -13,11 +13,24 @@ import Navbar from "@/components/navbar/Navbar";
 import ProductsSection from "@/components/products/ProductsSection";
 import ServicesSection from "@/components/services/ServicesSection";
 import StatsSection from "@/components/stats/StatsSection";
+import JsonLd from "@/components/seo/JsonLd";
 import WhyPetroaSection from "@/components/why-petroa/WhyPetroaSection";
+import { buildHomeJsonLd } from "@/lib/seo/json-ld";
+import type { Metadata } from "next";
+import { siteConfig } from "@/lib/seo/site";
+
+export const metadata: Metadata = {
+  title: siteConfig.title,
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (
     <ContactProvider>
+      <JsonLd data={buildHomeJsonLd()} />
       <div className="relative flex min-h-full flex-col bg-petroa-bg">
         <Navbar />
         <main className="flex flex-1 flex-col">

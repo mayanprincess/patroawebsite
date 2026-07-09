@@ -69,7 +69,7 @@ export default function HeroSection() {
               transition={{ delay: 0.5 }}
             >
               <p className="text-base leading-[1.47] text-petroa-text/50 lg:text-md lg:leading-[1.47]">
-                Your Strategic Energy Partner
+                Your Strategic Energy Partner for Wholesale Fuel
                 <br />
                 in Honduras &amp; the Caribbean
               </p>
