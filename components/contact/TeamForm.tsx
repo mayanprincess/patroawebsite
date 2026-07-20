@@ -9,6 +9,7 @@ import {
   secondaryButtonClassName,
   submitButtonClassName,
 } from "./FormField";
+import TurnstileWidget, { turnstileSiteKey } from "./TurnstileWidget";
 
 type TeamFormProps = {
   onClose: () => void;
@@ -17,6 +18,8 @@ type TeamFormProps = {
 export default function TeamForm({ onClose }: TeamFormProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -38,6 +41,7 @@ export default function TeamForm({ onClose }: TeamFormProps) {
           company: formData.get("company"),
           preferredContact: formData.get("preferredContact"),
           message: formData.get("message"),
+          turnstileToken,
         }),
       });
 
@@ -54,6 +58,9 @@ export default function TeamForm({ onClose }: TeamFormProps) {
       setErrorMessage(
         error instanceof Error ? error.message : "Unable to send your message.",
       );
+      // Turnstile tokens are single-use, so request a fresh one after failure.
+      setTurnstileToken("");
+      setTurnstileResetSignal((signal) => signal + 1);
     }
   }
 
@@ -132,6 +139,11 @@ export default function TeamForm({ onClose }: TeamFormProps) {
         />
       </FormField>
 
+      <TurnstileWidget
+        onToken={setTurnstileToken}
+        resetSignal={turnstileResetSignal}
+      />
+
       {status === "error" ? (
         <p className="text-sm text-red-600" role="alert">
           {errorMessage}
@@ -141,7 +153,7 @@ export default function TeamForm({ onClose }: TeamFormProps) {
       <div className="flex flex-wrap items-center gap-6 pt-2">
         <button
           type="submit"
-          disabled={status === "loading"}
+          disabled={status === "loading" || (Boolean(turnstileSiteKey) && !turnstileToken)}
           className={submitButtonClassName}
         >
           {status === "loading" ? "Sending..." : "Send Message"}
